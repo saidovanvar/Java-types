@@ -1,59 +1,40 @@
-// let name = "hello"
-// let message = 98
-// let messages = 9n
-// let result = true
+let list = document.querySelector("#list");
 
-// console.log(name, message, messages, result)
+let fetchCountries = async (url) => {
+    let res = await fetch(url);
+    let json = await res.json();
 
-// let nem = prompt("Hamma harajatlar 9732738.6 so'm")
-// console.log(nem)
-// if (nem>9732738.6){
-//     console.log("Oq yul,Anvar!")
-// }else {
-//     console.log("Anvar,ozgina sabr qilish kerak bular ekan")
-// }
-// for (let i=0 ; i <= 20; i=i+2) {
-//     console.log(i)
-// }
-// let number = prompt("Sonni kiriting: ");
-//
-// if (number > 0) {
-//     alert("Musbat son");
-// } else if (number < 0) {
-//     alert("Manfiy son");
-// } else {
-//     alert("Bu nol");
-// }
-//
-// let N = prompt("N sonini kiriting: ");
-//
-// let result = "";
-// for (let i = 1; i <= N; i++) {
-//     if (i % 3 === 0) {
-//         result += i + "\n";
-//     }
-// }
-//
-// if (result) {
-//     alert("3 ga bo'linadigan sonlar: \n" + result);
-// } else {
-//     alert("3 ga bo'linadigan sonlar yo'q.");
-// }
-let N = prompt("N sonini kiriting: ");
+    WriteCountries(json);
+};
 
-let result = "";
-for (let i = 1; i <= N; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-        result += i + " 3 va 5 ga bo'linadi\n";
-    } else if (i % 3 === 0) {
-        result += i + " 3 ga bo'linadi\n";
-    } else if (i % 5 === 0) {
-        result += i + " 5 ga bo'linadi\n";
-    } else if (i % 2 === 0) {
-        result += i + " juft son\n";
-    } else {
-        result += i + " toq son\n";
-    }
+fetchCountries("https://restcountries.com/v3.1/all");
+
+function WriteCountries(data) {
+    data.forEach((country) => {
+        let li = document.createElement("li");
+
+        li.innerHTML = `
+      <div class="bg-gray-300 rounded-md p-2 cursor-pointer">
+        <h3 class="text-center font-bold text-[20px]">${country.name.common}</h3>
+        <img class="w-[200px] h-[100px] mx-auto" src="${country.flags.png}" alt="${country.flags.alt}">
+        
+        <div class="dropdown hidden mt-2 bg-white rounded-md p-2 shadow">
+          <p><strong>Name:</strong> ${country.name.common}</p>
+          <p><strong>Region:</strong> ${country.region}</p>
+          <p><strong>Area:</strong> ${country.area}</p>
+          <img class="w-[200px] h-[100px] mx-auto mt-2" src="${country.flags.png}" alt="${country.flags.alt}">
+        </div>
+      </div>
+    `;
+
+        let card = li.querySelector("div");
+        let dropdown = li.querySelector(".dropdown");
+
+        card.addEventListener("click", () => {
+            dropdown.classList.toggle("hidden");
+        });
+
+        list.appendChild(li);
+    });
 }
 
-alert(result);

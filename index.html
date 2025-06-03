@@ -1,15 +1,24 @@
-<!Doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Anvarni safari   </title>
+    <title>Countries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .user {
+            list-style: none;
+        }
+    </style>
+
 </head>
 <body>
-<h1>Anvar safari</h1>
-<p>Checkout Top Rated Creators on the NFT Marketplace</p>
+<div class="user max-w-[1200px] mx-auto w-full pb-[20px]">
+    <div id="list" class="grid grid-cols-4 gap-4"></div>
+</div>
+<div id="innerList"></div>
 <script src="main.js"></script>
 </body>
 </html>
