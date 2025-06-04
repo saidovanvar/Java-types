@@ -18,20 +18,20 @@ function WriteCountries(data) {
         <h3 class="text-center font-bold text-[20px]">${country.name.common}</h3>
         <img class="w-[200px] h-[100px] mx-auto" src="${country.flags.png}" alt="${country.flags.alt}">
         
-        <div class="dropdown hidden mt-2 bg-white rounded-md p-2 shadow">
-          <p><strong>Name:</strong> ${country.name.common}</p>
-          <p><strong>Region:</strong> ${country.region}</p>
-          <p><strong>Area:</strong> ${country.area}</p>
+        <div class="box hidden mt-2 bg-white rounded-md p-2 shadow">
+          <p style="text-align: center"><strong>Name:</strong> ${country.name.common}</p>
+          <p style="text-align: center"><strong>Region:</strong> ${country.region}</p>
+          <p style="text-align: center"><strong>Area:</strong> ${country.area}</p>
           <img class="w-[200px] h-[100px] mx-auto mt-2" src="${country.flags.png}" alt="${country.flags.alt}">
         </div>
       </div>
     `;
 
-        let card = li.querySelector("div");
-        let dropdown = li.querySelector(".dropdown");
+        let off = li.querySelector("div");
+        let box = li.querySelector(".box");
 
-        card.addEventListener("click", () => {
-            dropdown.classList.toggle("hidden");
+        off.addEventListener("click", () => {
+            box.classList.toggle("hidden");
         });
 
         list.appendChild(li);
