@@ -1,40 +1,27 @@
-let list = document.querySelector("#list");
-
-let fetchCountries = async (url) => {
-    let res = await fetch(url);
-    let json = await res.json();
-
-    WriteCountries(json);
-};
-
-fetchCountries("https://restcountries.com/v3.1/all");
-
-function WriteCountries(data) {
-    data.forEach((country) => {
-        let li = document.createElement("li");
-
-        li.innerHTML = `
-      <div class="bg-gray-300 rounded-md p-2 cursor-pointer">
-        <h3 class="text-center font-bold text-[20px]">${country.name.common}</h3>
-        <img class="w-[200px] h-[100px] mx-auto" src="${country.flags.png}" alt="${country.flags.alt}">
-        
-        <div class="box hidden mt-2 bg-white rounded-md p-2 shadow">
-          <p style="text-align: center"><strong>Name:</strong> ${country.name.common}</p>
-          <p style="text-align: center"><strong>Region:</strong> ${country.region}</p>
-          <p style="text-align: center"><strong>Area:</strong> ${country.area}</p>
-          <img class="w-[200px] h-[100px] mx-auto mt-2" src="${country.flags.png}" alt="${country.flags.alt}">
-        </div>
-      </div>
-    `;
-
-        let off = li.querySelector("div");
-        let box = li.querySelector(".box");
-
-        off.addEventListener("click", () => {
-            box.classList.toggle("hidden");
-        });
-
-        list.appendChild(li);
+let li = document.querySelector("#list")
+let dataFetch = async () => {
+    let status = await fetch("https://crm-test-api.duckdns.org/api/Leads", {
+        headers: {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyIiwibmFtZSI6ImFzaWxiZWsiLCJ1bmlxdWVfbmFtZSI6Iis5OTg5MTQ1NDIzMzkiLCJqdGkiOiIwN2NjZWFjZi0zNzYyLTRhOGYtOTVkMi1jZDA3NjhmNzBjM2IiLCJUZW5hbnRJZCI6IjEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc1NTA4NDE5OSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIn0.UFF5AqUWqO-Reh-bDURJ4Vz1ifmbiu6zE47Rbzp_M-g"
+        }
     });
+    let data = await status.json();
+    getData(data.items);
 }
+dataFetch();
 
+function getData(data ) {
+    data.forEach((item , index) => {
+        console.log(item)
+        let list = document.createElement("li");
+        list.innerHTML = `
+        <div class="bg-blue-200 rounded-md p-4">
+        <p>
+        <span>${index+1}</span>
+        ${item.firstName} {item.lastName}
+        </p>
+        <p>${item.phoneNumber}</p>
+        <div>`;
+        li.append(list);
+    })
+}
