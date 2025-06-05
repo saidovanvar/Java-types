@@ -15,13 +15,14 @@ function getData(data ) {
         console.log(item)
         let list = document.createElement("li");
         list.innerHTML = `
-        <div class="bg-blue-200 rounded-md p-4">
+        <div class="bg-neutral-950 text-[#fff] rounded-[25px] text-center p-4 m-auto">
         <p>
         <span>${index+1}</span>
         ${item.firstName} {item.lastName}
         </p>
         <p>${item.phoneNumber}</p>
         <div>`;
+        list.style.listStyle = "none";
         li.append(list);
     })
 }
