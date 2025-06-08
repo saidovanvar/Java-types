@@ -23,8 +23,12 @@ background: linear-gradient(93deg, rgba(255, 247, 0, 1) 0%, rgba(255, 0, 0, 1) 1
         </p>
         <p>${item.description.length > 60 ? item.description.slice(0, 60) + "..." : item.description}</p>
         
-        <img class="w-[110px] h-[150px] m-auto rounded-[20px]" src="${item.image_url ? item.image_url : "./iphone.jpg"}" alt="${item.image_url }">
+        <img id="img" class="w-[110px] h-[150px] m-auto rounded-[20px]" src="${item.image_url ? item.image_url : "./iphone.jpg"}" alt="${item.image_url }">
         <div>`;
+        let img = list.querySelector('img');
+        if (img === undefined) {
+            img = document.createElement("./iphone.jpg");
+        }
         list.style.listStyle = "none";
         li.appendChild(list);
     })
