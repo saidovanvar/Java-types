@@ -11,9 +11,25 @@
 
 </head>
 <body>
-
-    <div id="list" class="grid grid-cols-4 gap-4"></div>
-
+<ul id="list" class="grid grid-cols-4 gap-4"></ul>
+<form id="form" class="grid grid-cols-3 inline-flex gap-4 absolute bottom-0 w-full">
+    <div class="flex items-center gap-2 w-full">
+        <input class="p-4 bg-green-200 w-full" id="title" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <div class="flex items-center gap-2 w-full">
+        <input class="p-4 bg-green-200 w-full" id="description" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <div class="flex items-center gap-2 w-full">
+        <input class="p-4 bg-green-200 w-full" id="image_url" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <div class="flex items-center gap-2 w-full">
+        <input class="p-4 bg-green-200 w-full" id="category" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <div class="flex items-center gap-2 w-full">
+        <input class="p-4 bg-green-200 w-full" id="condition" type="text" name="name" placeholder="Enter your name">
+    </div>
+    <button type="submit" class="p-4 bg-blue-500 w-full text-white" id="submit">Submit</button>
+</form>
 <script src="main.js"></script>
 </body>
 </html>
