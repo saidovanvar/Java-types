@@ -23,10 +23,20 @@
         <input class="p-4 bg-green-200 w-full" id="image_url" type="text" name="name" placeholder="image_url">
     </div>
     <div class="flex items-center gap-2 w-full">
-        <input class="p-4 bg-green-200 w-full" id="category" type="text" name="name" placeholder="category">
+        <select class="p-4 bg-green-200 w-full" id="category" name="name">
+            <option value="electronics">electronics</option>
+            <option value="clothing">clothing</option>
+            <option value="books">books</option>
+            <option value="home">home</option>
+            <option value="other ">other</option>
+        </select>
     </div>
     <div class="flex items-center gap-2 w-full">
-        <input class="p-4 bg-green-200 w-full" id="condition" type="text" name="name" placeholder="condition">
+        <select class="p-4 bg-green-200 w-full" id="condition" name="name">
+            <option value="new">new</option>
+            <option value="used">used</option>
+            <option value="broken ">broken </option>
+        </select>
     </div>
     <button type="submit" class="p-4 bg-blue-500 w-full text-white" id="submit">Submit</button>
 </form>
